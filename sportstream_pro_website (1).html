@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SportStream Pro - Live Sports & TV</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body { background-color: #0b0f19; color: #e2e8f0; font-family: 'Inter', sans-serif; }
+    .neon-border { border: 1px solid #10b981; box-shadow: 0 0 10px rgba(16, 185, 129, 0.2); }
+    .ad-placeholder { background: rgba(30, 41, 59, 0.7); border: 2px dashed #334155; }
+  </style>
+  
+  <!-- ========================================== -->
+  <!-- MONETAG POPUNDER / ANTI-ADBLOCK SCRIPT HERE -->
+  <!-- ========================================== -->
+  <!-- Paste your Monetag Direct Link / Popunder Script inside <script> here -->
+
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- Header Section -->
+  <header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-wrap justify-between items-center gap-4">
+      <div class="flex items-center gap-2">
+        <i class="fa-solid fa-play text-emerald-400 text-2xl"></i>
+        <span class="text-xl font-bold bg-gradient-to-r from-emerald-400 to-cyan-500 bg-clip-text text-transparent">SportStream Pro</span>
+      </div>
+      <nav class="flex flex-wrap gap-2 md:gap-4 text-sm font-medium">
+        <button onclick="filterCategory('all')" class="hover:text-emerald-400 text-slate-300 transition">All Matches</button>
+        <button onclick="filterCategory('cricket')" class="hover:text-emerald-400 text-slate-300 transition"><i class="fa-solid fa-baseball-bat-ball mr-1"></i> Cricket</button>
+        <button onclick="filterCategory('football')" class="hover:text-emerald-400 text-slate-300 transition"><i class="fa-solid fa-futbol mr-1"></i> Football</button>
+        <button onclick="filterCategory('f1')" class="hover:text-emerald-400 text-slate-300 transition"><i class="fa-solid fa-flag-checkered mr-1"></i> F1</button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Top Ad Slot (Monetag Banner) -->
+  <div class="max-w-7xl mx-auto px-4 my-4 w-full">
+    <div class="ad-placeholder rounded-lg p-3 text-center text-xs text-slate-400">
+      <p class="font-semibold text-slate-300 mb-1">ADVERTISEMENT</p>
+      <p class="text-slate-500">&lt;!-- MONETAG TOP BANNER 728x90 SCRIPT HERE --&gt;</p>
+      <!-- Paste Monetag Header Banner Script Here -->
+    </div>
+  </div>
+
+  <!-- Main Grid Layout -->
+  <main class="max-w-7xl mx-auto px-4 py-2 flex-grow w-full grid grid-cols-1 lg:grid-cols-4 gap-6">
+
+    <!-- Left/Center: Video Player & Matches List -->
+    <section class="lg:col-span-3 space-y-6">
+
+      <!-- Stream Video Player Container -->
+      <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
+        <div class="flex justify-between items-center mb-3">
+          <h2 id="current-title" class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+            <span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span>
+            Select a Match or Channel Below
+          </h2>
+          <span class="text-xs bg-slate-800 text-slate-400 px-2.5 py-1 rounded-full border border-slate-700">HD Live</span>
+        </div>
+
+        <!-- Video Player Frame -->
+        <div class="relative w-full aspect-video bg-black rounded-lg overflow-hidden flex items-center justify-center border border-slate-800">
+          <iframe id="stream-player" class="w-full h-full" src="https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig" frameborder="0" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
+        </div>
+
+        <!-- Native Ad Slot below Video Player -->
+        <div class="ad-placeholder rounded-lg p-3 my-4 text-center text-xs text-slate-400">
+          <p class="font-semibold text-slate-300">ADVERTISEMENT</p>
+          <p class="text-slate-500">&lt;!-- MONETAG NATIVE BANNER / SMARTLINK CODE HERE --&gt;</p>
+          <!-- Paste Monetag Banner Script Here -->
+        </div>
+      </div>
+
+      <!-- Live Matches Cards -->
+      <div>
+        <h3 class="text-md font-semibold text-slate-200 mb-3 flex items-center gap-2">
+          <i class="fa-solid fa-satellite-dish text-emerald-400"></i> Featured Live Matches
+        </h3>
+        <div id="matches-grid" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Dynamic Streams Output -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Right Sidebar: Live TV Channels & Ads -->
+    <aside class="space-y-6">
+      
+      <!-- Channels List Box -->
+      <div class="bg-slate-900 rounded-xl p-4 border border-slate-800">
+        <h3 class="text-sm font-bold text-slate-200 uppercase tracking-wider mb-3">Live Sports Channels</h3>
+        <div id="channels-list" class="space-y-2 max-h-[350px] overflow-y-auto pr-1">
+          <!-- Dynamic Channels List -->
+        </div>
+      </div>
+
+      <!-- Sidebar Ad Slot (Monetag 300x250) -->
+      <div class="ad-placeholder rounded-lg p-4 text-center text-xs text-slate-400">
+        <p class="font-semibold text-slate-300 mb-1">SPONSORED</p>
+        <p class="text-slate-500">&lt;!-- MONETAG SIDEBAR BANNER 300x250 HERE --&gt;</p>
+        <!-- Paste Monetag Sidebar Banner Script Here -->
+      </div>
+    </aside>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="bg-slate-900 border-t border-slate-800 mt-10 py-6 text-center text-xs text-slate-500">
+    <p>© 2026 SportStream Pro. All streams are embedded from open third-party sources for educational purposes.</p>
+  </footer>
+
+  <!-- App Dynamic JavaScript -->
+  <script>
+    const streams = [
+      {
+        id: 1,
+        title: "Live Cricket - ICC World Event HD",
+        category: "cricket",
+        teams: "India vs Pakistan / T20 Special",
+        embedUrl: "https://www.youtube.com/embed/live_stream?channel=UC4R8DWoMoI7CAwX8_LjQHig" 
+      },
+      {
+        id: 2,
+        title: "Premier League Live Stream",
+        category: "football",
+        teams: "Real Madrid vs Barcelona / Match Live",
+        embedUrl: "https://vidsrc.me/embed/tv" 
+      },
+      {
+        id: 3,
+        title: "Formula 1 Grand Prix 2026",
+        category: "f1",
+        teams: "F1 Main Race Live Stream",
+        embedUrl: "https://www.youtube.com/embed/21X5lGlDOfg" 
+      }
+    ];
+
+    function loadStream(url, title) {
+      document.getElementById('stream-player').src = url;
+      document.getElementById('current-title').innerHTML = `<span class="w-3 h-3 rounded-full bg-red-500 animate-pulse"></span> NOW PLAYING: ${title}`;
+      window.scrollTo({ top: 100, behavior: 'smooth' });
+    }
+
+    function renderMatches(filter = 'all') {
+      const grid = document.getElementById('matches-grid');
+      grid.innerHTML = '';
+      
+      const filtered = filter === 'all' ? streams : streams.filter(s => s.category === filter);
+
+      filtered.forEach(item => {
+        grid.innerHTML += `
+          <div class="bg-slate-800/80 hover:bg-slate-800 p-4 rounded-xl border border-slate-700 transition flex justify-between items-center">
+            <div>
+              <span class="text-[10px] uppercase font-bold tracking-wider bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 px-2 py-0.5 rounded">${item.category}</span>
+              <h4 class="font-bold text-sm text-slate-100 mt-1">${item.teams}</h4>
+              <p class="text-xs text-slate-400">${item.title}</p>
+            </div>
+            <button onclick="loadStream('${item.embedUrl}', '${item.teams}')" class="bg-emerald-500 hover:bg-emerald-600 text-black font-semibold text-xs px-3 py-2 rounded-lg transition flex items-center gap-1">
+              <i class="fa-solid fa-play"></i> Play
+            </button>
+          </div>
+        `;
+      });
+    }
+
+    function renderChannels() {
+      const list = document.getElementById('channels-list');
+      streams.forEach(item => {
+        list.innerHTML += `
+          <button onclick="loadStream('${item.embedUrl}', '${item.title}')" class="w-full text-left p-2.5 rounded-lg bg-slate-800/50 hover:bg-slate-800 border border-slate-700/50 text-xs text-slate-300 flex justify-between items-center transition">
+            <span><i class="fa-solid fa-tv text-emerald-400 mr-2"></i> ${item.title}</span>
+            <i class="fa-solid fa-chevron-right text-[10px] text-slate-500"></i>
+          </button>
+        `;
+      });
+    }
+
+    function filterCategory(cat) {
+      renderMatches(cat);
+    }
+
+    // Initialize layout
+    window.onload = () => {
+      renderMatches();
+      renderChannels();
+      loadStream(streams[0].embedUrl, streams[0].teams);
+    };
+  </script>
+</body>
+</html>
